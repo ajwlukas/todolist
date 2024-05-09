@@ -5,24 +5,30 @@ import "./App.css";
 
 function App() {
   let name : string  = "토끼";
+
+  const style = {
+    backgroundColor : 'black',
+    color : 'white',
+    fontSize : '48px',
+    fontWeight : 'bold',
+    padding : '20px'
+  }
   
-  // return (
-  //     <div className="container">
-  //       <h1 className = "test">Hello, {true ? null : name}!!</h1>
-  //       <p>반갑습니다</p>
-  //     </div>
-  // );
+  return (
+      <div style = {{
+        backgroundColor : 'blue',
+        color : 'white',
+        fontSize : '48px',
+        fontWeight : 'bold',
+        padding : '20px'
+      }
+      }>
+        <h1 style = {style}>Hello, {true ? null : name}!!</h1>
+        <p>반갑습니다</p>
+      </div>
+  );
 
-  const port = undefined;
-
-  return (<>
-  {port || '포트를 설정하지 않았습니다'}
-  </>);
 }
 
-
-// function App() {
-//   return React.createElement("div", null, "Hello, React!!", React.createElement("p", null, "반갑습니다."));
-// }
 
 export default App;
