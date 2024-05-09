@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//App.tsx
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let name : string  = "토끼";
+  
+  // return (
+  //     <div className="container">
+  //       <h1 className = "test">Hello, {true ? null : name}!!</h1>
+  //       <p>반갑습니다</p>
+  //     </div>
+  // );
+
+  const port = undefined;
+
+  return (<>
+  {port || '포트를 설정하지 않았습니다'}
+  </>);
 }
+
+
+// function App() {
+//   return React.createElement("div", null, "Hello, React!!", React.createElement("p", null, "반갑습니다."));
+// }
 
 export default App;
