@@ -5,6 +5,7 @@ import "./App.css";
 import ClassCom from "./ClassCom";
 import FuncCom from "./FuncCom";
 import TodoList from "./todolist";
+import MapTest from "./MapTest";
 
 function App() {
   let name : string  = "토끼";
@@ -14,6 +15,7 @@ function App() {
       <div className="container">
         {/* 주석문을 작성합니다 */}
         <TodoList/>
+        <MapTest/>
       </div>
   );
 
