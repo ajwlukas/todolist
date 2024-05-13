@@ -7,6 +7,7 @@ import FuncCom from "./FuncCom";
 import TodoList from "./todolist";
 import MapTest from "./MapTest";
 import Timer from "./Timer";
+import Clock from "./Timer";
 
 function App() {
   let name : string  = "토끼";
@@ -16,7 +17,7 @@ function App() {
       <div className="container">
         {/* 주석문을 작성합니다 */}
         <TodoList/>
-        <Timer/>
+        <Clock/>
       </div>
   );
 
