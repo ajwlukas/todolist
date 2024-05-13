@@ -8,6 +8,7 @@ import TodoList from "./todolist";
 import MapTest from "./MapTest";
 import Timer from "./Timer";
 import Clock from "./Timer";
+import MyWeather from "./MyWeather";
 
 function App() {
   let name : string  = "토끼";
@@ -17,7 +18,8 @@ function App() {
       <div className="container">
         {/* 주석문을 작성합니다 */}
         <TodoList/>
-        <Clock/>
+        {/* <Clock/> */}
+        <MyWeather weather="맑음" test="string"> 일기예보</MyWeather>
       </div>
   );
 
