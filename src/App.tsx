@@ -9,6 +9,7 @@ import MapTest from "./MapTest";
 import Timer from "./Timer";
 import Clock from "./Timer";
 import MyWeather from "./MyWeather";
+import TodoModal from "./TodoModal";
 
 function App() {
   let name : string  = "토끼";
@@ -18,8 +19,8 @@ function App() {
       <div className="container">
         {/* 주석문을 작성합니다 */}
         <TodoList/>
-        {/* <Clock/> */}
-        <MyWeather weather="맑음" test="string"> 일기예보</MyWeather>
+        <Clock/>
+        <MyWeather weather="맑음" test="string" children="일기예보"/> 
       </div>
   );
 

@@ -1,6 +1,7 @@
 //todolist.tsx
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import TodoModal from "./TodoModal";
 
 type Todo = {
   id: number;
@@ -19,18 +20,37 @@ const TodoList: React.FC = () => {
 
   const [newTodo, setNewTodo] = useState<string>("");
 
+  const [showDetail, setShowDetail] = useState<boolean>(false);
+  const [selectedTodo,setSelectedTodo] = useState<Todo|null>(null);
+
   const handleCheckedChange = (itemId: number) => {
     setTodos((prevItems) =>
-      prevItems.map((item) =>
-        item.id === itemId ? { ...item, isChecked: !item.isChecked } : item
+      prevItems.map((item, index) =>
+        index === itemId ? { ...item, isChecked: !item.isChecked } : item
       )
     );
   };
 
-  const addTodo = ()=>{
-    if(newTodo.trim() !== ''){
-      setTodos([...todos,{id : todos.length, text : newTodo, isChecked : false}]);
+  const addTodo = () => {
+    if (newTodo.trim() !== "") {
+      setTodos([
+        ...todos,
+        { id: todos.length, text: newTodo, isChecked: false },
+      ]);
     }
+  };
+
+  const removeTodo = (id: number) => {
+    setTodos(todos.filter((todo, index) => index !== id));
+  };
+
+  const handleTodoClick = (todo : Todo)=> {
+    setShowDetail(true);
+    setSelectedTodo(todo);
+  }
+
+  const handleCloseDetail = () =>{
+    setShowDetail(false);
   }
 
   return (
@@ -42,9 +62,11 @@ const TodoList: React.FC = () => {
             type="text"
             placeholder="할 일 입력"
             style={{ marginRight: "10px", writingMode: "horizontal-tb" }}
-            onChange={(e)=> setNewTodo(e.target.value)}
+            onChange={(e) => setNewTodo(e.target.value)}
           />
-          <Button variant="primary" onClick={addTodo}>추가</Button>
+          <Button variant="primary" onClick={addTodo}>
+            추가
+          </Button>
         </div>
         <div className="board">
           <ul>
@@ -57,17 +79,30 @@ const TodoList: React.FC = () => {
                       handleCheckedChange(index);
                     }}
                   ></input>
-                  {todo.isChecked ? (
-                    <del>{todo.text}</del>
-                  ) : (
-                    <span>{todo.text}</span>
-                  )}
+
+                  <span onClick={()=>handleTodoClick(todo)}>
+                    {todo.isChecked ? (
+                      <del>{todo.text}</del>
+                    ) : (
+                      <span>{todo.text}</span>
+                    )}
+                  </span>
+
+                  <button
+                    className="del-button"
+                    onClick={() => {
+                      removeTodo(index);
+                    }}
+                  >
+                    삭제
+                  </button>
                 </li>
               );
             })}
           </ul>
         </div>
       </div>
+      <TodoModal show={showDetail} todo={selectedTodo} handleClose={handleCloseDetail}/>
     </div>
   );
 };
